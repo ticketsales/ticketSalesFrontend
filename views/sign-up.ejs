@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <meta name="csrf-token" content="<%=csrfToken%>">
+        <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../assets/css/all.css">
+        <link rel="stylesheet" href="../assets/css/animate.css">
+        <link rel="stylesheet" href="../assets/css/flaticon.css">
+        <link rel="stylesheet" href="../assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="../assets/css/odometer.css">
+        <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="../assets/css/nice-select.css">
+        <link rel="stylesheet" href="../assets/css/main.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/solid.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+        <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+        <title>Nodemy - Online Ticket Booking Website HTML Template</title>
+    </head>
+    <body>
+        <!-- ==========Preloader========== -->
+        <div class="preloader">
+            <div class="preloader-inner">
+                <div class="preloader-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ==========Preloader========== -->
+        <!-- ==========Sign-In-Section========== -->
+        <section class="account-section bg_img" data-background="../assets/images/account/account-bg.jpg">
+            <div class="container">
+                <div class="padding-top padding-bottom">
+                    <div class="account-area">
+                        <div class="section-header-3">
+                            <span class="cate">welcome</span>
+                            <h2 class="title">to Nodemy </h2>
+                        </div>
+                        <form class="account-form">
+                            <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Your Fullname" id="fullname1" required>
+                                <span id="nameError"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" placeholder="Enter Your Email" id="email1" required>
+                                <span id="emailError"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="password" placeholder="Password" id="pass1" required>
+                                <span id="passError"></span>
+                            </div>
+                            <div class="form-group">
+                                <input type="phone" placeholder="Enter Your Ceilphone" id="mobile1" required>
+                                <span id="phoneError"></span>
+                            </div>
+                            <div class="form-group">
+                                <label for="birthday">
+                                    Birthday
+                                </label>
+                                <div id="myForm">
+                                    <select id="day"></select>
+                                    <select id="month"></select>
+                                    <select id="year"></select>                                  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="gender">
+                                    Gender
+                                </label>
+                                <div id="myRadio">
+                                    <div id="myRadio2">
+                                    <p>
+                                      <label for="male" id="gender">Male</label>
+                                      <input type="radio" name="gender" id="male" value="male"  checked="checked">
+                                    </p>
+                                    </div>
+                                    <div id="myRadio2">
+                                    <p>
+                                      <label for="female" id="gender">Female</label>
+                                      <input type="radio" name="gender" id="female" value="female">
+                                    </p>
+                                    </div>
+                                    <div id="myRadio2">
+                                    <p>
+                                      <label for="other" id="gender">Other</label>
+                                      <input type="radio" name="gender" id="other" value="other">
+                                    </p>
+                                    </div>
+                                </div>                                
+                            </div>
+                            <div class="form-group checkgroup">
+                                <input type="checkbox" id="bal" required checked>
+                                <label for="bal">
+                                    I agree to the <a href="#0">Terms, Privacy Policy</a>
+                                    and <a href="#0">Fees</a>
+                                </label>
+                            </div>
+                            <div class="form-group text-center">
+                                <input type="submit" value="Sign Up" id="submitSignup">
+                            </div>
+                        </form>
+                        <div class="option">
+                            Already have an account? <a href="/users/sign-in">Login</a>
+                        </div>
+                        <div class="or">
+                            <span>Or</span>
+                        </div>
+                        <ul class="social-icons">
+                            <li>
+                                <a href="#0">
+                                    <i class="fa fa-facebook"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#0" class="active">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#0">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Sign-In-Section========== -->
+        <script src="../assets/js/jquery-3.3.1.min.js"></script>
+        <script src="../assets/js/modernizr-3.6.0.min.js"></script>
+        <script src="../assets/js/plugins.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/magnific-popup.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/countdown.min.js"></script>
+        <script src="../assets/js/odometer.min.js"></script>
+        <script src="../assets/js/viewport.jquery.js"></script>
+        <script src="../assets/js/nice-select.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/dateoption.js"></script>
+        <script src="../assets/js/auth.js"></script>
+    </body>
+</html>

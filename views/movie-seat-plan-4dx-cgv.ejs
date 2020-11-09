@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="csrf-token" content="<%=csrfToken%>">
+        <%- include("./partials/head") -%>
+    </head>
+    <body>
+        <!-- ==========Preloader========== -->
+        <div class="preloader">
+            <div class="preloader-inner">
+                <div class="preloader-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ==========Preloader========== -->
+        <!-- ==========Overlay========== -->
+        <div class="overlay"></div>
+        <a href="#0" class="scrollToTop">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- ==========Overlay========== -->
+        <!-- ==========Header-Section========== -->
+        <%- include("./partials/header", {header: header}) -%>        
+        <!-- ==========Header-Section========== -->        
+        <!-- ==========Banner-Section========== -->
+        <section class="details-banner hero-area bg_img seat-plan-banner" data-background="../assets/images/banner/banner04.jpg">
+            <div class="container">
+                <div class="details-banner-wrapper">
+                    <div class="details-banner-content style-two">
+                        <h3 class="title"><%=timeSlot.movies[0].movie_name%></h3>
+                        <div class="tags">
+                            <a href="#0">Hall <%=timeSlot.halls[0].hall_name%></a>
+                            <a href="#0">English - 2D</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Banner-Section========== -->
+        <!-- ==========Page-Title========== -->
+        <section class="page-title bg-one">
+            <div class="container">
+                <div class="page-title-area">
+                    <div class="item md-order-1">
+                        <a href="/hall-area/<%=timeSlot.movie.id%>" class="custom-button back-button">
+                            <i class="fa fa-angle-double-right"></i>
+                            back
+                    
+                        </a>
+                    </div>
+                    <div class="item date-item">
+                        <!-- <span class="date">MON, SEP 09 2020</span> -->
+                        <span class="date"><%=dateSchedule%></span>
+                        <select class="select-bar">
+                            <option value="sc0"><%=timeSlot.start_time.slice(0,5)%></option>
+                            <!-- <option value="sc1">09:40</option>
+                            <option value="sc2">13:45</option>
+                            <option value="sc3">15:45</option>
+                            <option value="sc4">19:50</option> -->
+                        </select>
+                    </div>
+                    <div class="item">
+                        <!-- <h5 class="title" id="countdown">05:00</h5> -->
+                        <h5 class="title" id="countdown"></h5>
+                        <p>Mins Left</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Page-Title========== -->
+        <!-- ==========Movie-Section========== -->
+        <div class="seat-plan-section padding-bottom padding-top">
+            <div class="container">
+                <div class="screen-area">
+                    <h4 class="screen">screen</h4>
+                    <div class="screen-thumb">
+                        <img src="../assets/images/movie/screen-thumb.png" alt="movie">
+                    </div>
+                    <h5 class="subtitle">silver plus</h5>
+                    <div class="screen-wrapper">
+                        <ul class="seat-area">
+                            <li class="seat-line">
+                                <span>G</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'G1', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G3', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'G5', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G7', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G9', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'G11', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G13', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'G14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>G</span>
+                            </li>
+                            <li class="seat-line">
+                                <span>f</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'F1', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F3', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'F5', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F7', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F9', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat seat-free" onclick="getSeat('f7')">
+                                                <img src="../assets/images/movie/seat01-free.png" alt="seat" id="sf7">
+                                                <span class="sit-num">f7</span>
+                                            </li>
+                                            <li class="single-seat seat-free" onclick="getSeat('f8')">
+                                                <img src="../assets/images/movie/seat01-free.png" alt="seat" id="sf8">
+                                                <span class="sit-num">f8</span>
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-status", {pstValue: 'F11', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F13', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-status", {pstValue: 'F14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat seat-free" onclick="getSeat('f9')">
+                                                <img src="../assets/images/movie/seat01-free.png" alt="seat" id="sf9">
+                                                <span class="sit-num">f9</span>
+                                            </li>
+                                            <li class="single-seat seat-free" onclick="getSeat('f10')">
+                                                <img src="../assets/images/movie/seat01-free.png" alt="seat" id="sf10">
+                                                <span class="sit-num">f10</span>
+                                            </li>
+                                            <li class="single-seat seat-free"  onclick="getSeat('f11')">
+                                                <img src="../assets/images/movie/seat01-free.png" alt="seat" id="sf11">
+                                                <span class="sit-num">f11</span>
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat01.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>f</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <h5 class="subtitle">silver plus</h5>
+                    <div class="screen-wrapper">
+                        <ul class="seat-area couple">
+                            <li class="seat-line">
+                                <span>e</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E1E2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E3E4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E5E6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E7E8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E9E10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E11E12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'E13E14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>e</span>
+                            </li>
+                            <li class="seat-line">
+                                <span>d</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D1D2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D3D4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D5D6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D7D8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D9D10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('d7d8')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sd7d8">
+                                                <span class="sit-num">D7 D8</span>
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D11D12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'D13D14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>d</span>
+                            </li>
+                            <li class="seat-line">
+                                <span>c</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C1C2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C3C4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C5C6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C7C8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C9C10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C11C12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'C13C14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat seat-free-two" onclick="getSeatTwo('f11f12')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sf11f12">
+                                                <span class="sit-num">f11 f12</span>
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>c</span>
+                            </li>
+                            <li class="seat-line">
+                                <span>b</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B1B2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B3B4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B5B6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B7B8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B9B10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('b7b8')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sb7b8">
+                                                <span class="sit-num">b7 b8</span>
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B11B12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'B13B14', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li>
+                                            <li class="single-seat">
+                                                <img src="../assets/images/movie/seat02.png" alt="seat">
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>b</span>
+                            </li>
+                            <li class="seat-line">
+                                <span>a</span>
+                                <ul class="seat--area">
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A1A2', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A3A4', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat seat-free-two" onclick="getSeatTwo('a1a2')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa1a2">
+                                                <span class="sit-num">a1 a2</span>
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('a3a4')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa3a4">
+                                                <span class="sit-num">a3 a4</span>
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A5A6', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A7A8', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A9A10', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat seat-free-two" onclick="getSeatTwo('a5a6')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa5a6">
+                                                <span class="sit-num">a5 a6</span>
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('a7a8')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa7a8">
+                                                <span class="sit-num">a7 a8</span>
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('a9a10')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa9a10">
+                                                <span class="sit-num">a9 a10</span>
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                    <li class="front-seat">
+                                        <ul>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A11', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <%- include("./partials/seat-two-status", {pstValue: 'A12', pstStatus: seatStatus, prices: seatPrice}) -%>
+                                            <!-- <li class="single-seat seat-free-two" onclick="getSeatTwo('a11')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa11">
+                                                <span class="sit-num">a11</span>
+                                            </li>
+                                            <li class="single-seat seat-free-two" onclick="getSeatTwo('a12')">
+                                                <img src="../assets/images/movie/seat02-free.png" alt="seat" id="sa12">
+                                                <span class="sit-num">a12</span>
+                                            </li> -->
+                                        </ul>
+                                    </li>
+                                </ul>
+                                <span>a</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="proceed-book bg_img" data-background="../assets/images/movie/movie-bg-proceed.jpg">
+                    <div class="proceed-to-book">
+                        <div class="book-item">
+                            <span>You have Choosed Seat</span>
+                            <h3 class="title" id="seatItem"></h3>
+                        </div>
+                        <div class="book-item">
+                            <span>total price</span>
+                            <h3 class="title" id="totalPrice"></h3>
+                        </div>
+                        <div class="book-item">
+                            <a href="#" class="custom-button foodButton">proceed</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- ==========Movie-Section========== -->
+        <!-- ==========Footer-Section========== -->
+        <%- include("./partials/footer", {footer: footer}) -%>
+        <!-- ==========Footer-Section========== -->
+        <script src="../assets/js/jquery-3.3.1.min.js"></script>
+        <script src="../assets/js/modernizr-3.6.0.min.js"></script>
+        <script src="../assets/js/plugins.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/magnific-popup.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/countdown.mins.js"></script>
+        <script src="../assets/js/countdown.min.js"></script>
+        <script src="../assets/js/odometer.min.js"></script>
+        <script src="../assets/js/viewport.jquery.js"></script>
+        <script src="../assets/js/nice-select.js"></script>
+        <script src="../assets/js/main.js"></script>
+    </body>
+</html>

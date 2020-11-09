@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="csrf-token" content="<%=csrfToken%>">
+        <%- include("./partials/head") -%>
+    </head>
+    <body>
+        <!-- ==========Preloader========== -->
+        <div class="preloader">
+            <div class="preloader-inner">
+                <div class="preloader-icon">
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <!-- ==========Preloader========== -->
+        <!-- ==========Overlay========== -->
+        <div class="overlay"></div>
+        <a href="#0" class="scrollToTop">
+            <i class="fa fa-angle-up"></i>
+        </a>
+        <!-- ==========Overlay========== -->
+         <!-- ==========Header-Section========== -->
+         <%- include("./partials/header", {header: header}) -%>
+         <!-- ==========Header-Section========== -->       
+        <!-- ==========Banner-Section========== -->
+        <section class="banner-section">
+            <div class="banner-bg bg_img bg-fixed" data-background="../assets/images/banner/banner02.jpg"></div>
+            <div class="container">
+                <div class="banner-content">
+                    <h1 class="title bold">
+                        get <span class="color-theme">movie</span>
+                        tickets
+                    </h1>
+                    <p>Buy movie tickets in advance, find movie times watch trailers, read movie reviews and much more</p>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Banner-Section========== -->
+        <!-- ==========Ticket-Search========== -->
+        <section class="search-ticket-section padding-top pt-lg-0">
+            <div class="container">
+                <div class="search-tab bg_img" data-background="../assets/images/ticket/ticket-bg01.jpg">
+                    <div class="row align-items-center mb--20">
+                        <div class="col-lg-6 mb-20">
+                            <div class="search-ticket-header">
+                                <h6 class="category">welcome to Nodemy </h6>
+                                <h3 class="title">what are you looking for</h3>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 mb-20">
+                            <ul class="tab-menu ticket-tab-menu">
+                                <li class="active">
+                                    <div class="tab-thumb">
+                                        <img src="../assets/images/ticket/ticket-tab01.png" alt="ticket">
+                                    </div>
+                                    <span>movie</span>
+                                </li>
+                                <li>
+                                    <div class="tab-thumb">
+                                        <img src="../assets/images/ticket/ticket-tab02.png" alt="ticket">
+                                    </div>
+                                    <span>events</span>
+                                </li>
+                                <li>
+                                    <div class="tab-thumb">
+                                        <img src="../assets/images/ticket/ticket-tab03.png" alt="ticket">
+                                    </div>
+                                    <span>sports</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="tab-area">
+                        <div class="tab-item active">
+                            <form class="ticket-search-form">
+                                <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+                                <div class="form-group large">
+                                    <input type="text" placeholder="Search fo Movies" id="inputSearch">
+                                    <!-- <div id="btnSearch">
+                                        <i class="fas fa-search"></i>
+                                    </div> -->
+                                    <button type="submit" id="btnSearch">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/city.png" alt="ticket">
+                                    </div>
+                                    <span class="type">city</span>
+                                    <select class="select-bar city">
+                                        <% locations.forEach(function(local){ %>
+                                            <option value="<%= local.city_id %>"><%= local.city_name %></option>
+                                        <% }) %>
+                                            <!-- <option value="dhaka">dhaka</option>
+                                            <option value="rosario">rosario</option>
+                                            <option value="madrid">madrid</option>
+                                            <option value="koltaka">kolkata</option>
+                                            <option value="rome">rome</option>
+                                            <option value="khoksa">khoksa</option> -->
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/date.png" alt="ticket">
+                                    </div>
+                                    <span class="type">date</span>
+                                    <select class="select-bar date">                                      
+                                        <option value="<%= year %>-<%= month %>-<%= day %>"><%= day %>/<%= month %>/<%= year %></option>
+                                        <option value="<%= year %>-<%= month %>-<%= ((''+String(Number(day)+1)).length<2 ? '0' : '') + (Number(day)+1) %>"><%= ((''+String(Number(day)+1)).length<2 ? '0' : '') + (Number(day)+1) %>/<%= month %>/<%= year %></option>
+                                        <option value="<%= year %>-<%= month %>-<%= ((''+String(Number(day)+2)).length<2 ? '0' : '') + (Number(day)+2) %>"><%= ((''+String(Number(day)+2)).length<2 ? '0' : '') + (Number(day)+2) %>/<%= month %>/<%= year %></option>
+                                        <option value="<%= year %>-<%= month %>-<%= ((''+String(Number(day)+3)).length<2 ? '0' : '') + (Number(day)+3) %>"><%= ((''+String(Number(day)+3)).length<2 ? '0' : '') + (Number(day)+3) %>/<%= month %>/<%= year %></option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/cinema.png" alt="ticket">
+                                    </div>
+                                    <span class="type">cinema</span>
+                                    <select class="select-bar cinema">
+                                        <% cinemas.forEach(function(cine){ %>
+                                            <option value="<%= cine.cinema_name %>"><%= cine.cinema_name %></option>
+                                        <% }) %>                                       
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-item">
+                            <form class="ticket-search-form">
+                                <div class="form-group large">
+                                    <input type="text" placeholder="Search fo Events">
+                                    <button type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/city.png" alt="ticket">
+                                    </div>
+                                    <span class="type">city</span>
+                                    <select class="select-bar">
+                                        <option value="london">London</option>
+                                        <option value="dhaka">dhaka</option>
+                                        <option value="rosario">rosario</option>
+                                        <option value="madrid">madrid</option>
+                                        <option value="koltaka">kolkata</option>
+                                        <option value="rome">rome</option>
+                                        <option value="khoksa">khoksa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/date.png" alt="ticket">
+                                    </div>
+                                    <span class="type">date</span>
+                                    <select class="select-bar">
+                                        <option value="26-12-19">23/10/2020</option>
+                                        <option value="26-12-19">24/10/2020</option>
+                                        <option value="26-12-19">25/10/2020</option>
+                                        <option value="26-12-19">26/10/2020</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/cinema.png" alt="ticket">
+                                    </div>
+                                    <span class="type">event</span>
+                                    <select class="select-bar">
+                                        <option value="angular">angular</option>
+                                        <option value="startup">startup</option>
+                                        <option value="rosario">rosario</option>
+                                        <option value="madrid">madrid</option>
+                                        <option value="koltaka">kolkata</option>
+                                        <option value="Last-First">Last-First</option>
+                                        <option value="wish">wish</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="tab-item">
+                            <form class="ticket-search-form">
+                                <div class="form-group large">
+                                    <input type="text" placeholder="Search fo Sports">
+                                    <button type="submit">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/city.png" alt="ticket">
+                                    </div>
+                                    <span class="type">city</span>
+                                    <select class="select-bar">
+                                        <option value="london">London</option>
+                                        <option value="dhaka">dhaka</option>
+                                        <option value="rosario">rosario</option>
+                                        <option value="madrid">madrid</option>
+                                        <option value="koltaka">kolkata</option>
+                                        <option value="rome">rome</option>
+                                        <option value="khoksa">khoksa</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/date.png" alt="ticket">
+                                    </div>
+                                    <span class="type">date</span>
+                                    <select class="select-bar">
+                                        <option value="26-12-19">23/10/2020</option>
+                                        <option value="26-12-19">24/10/2020</option>
+                                        <option value="26-12-19">25/10/2020</option>
+                                        <option value="26-12-19">26/10/2020</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <div class="thumb">
+                                        <img src="../assets/images/ticket/cinema.png" alt="ticket">
+                                    </div>
+                                    <span class="type">sports</span>
+                                    <select class="select-bar">
+                                        <option value="football">football</option>
+                                        <option value="cricket">cricket</option>
+                                        <option value="cabadi">cabadi</option>
+                                        <option value="madrid">madrid</option>
+                                        <option value="gadon">gadon</option>
+                                        <option value="rome">rome</option>
+                                        <option value="khoksa">khoksa</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Ticket-Search========== -->
+        <!-- ==========Movie-Section========== -->
+        <section class="movie-section padding-top padding-bottom">
+            <div class="container">
+                <div class="row flex-wrap-reverse justify-content-center">
+                    <div class="col-sm-10 col-md-8 col-lg-3">
+                        <div class="widget-1 widget-banner">
+                            <div class="widget-1-body">
+                                <a href="#0">
+                                    <img src="../assets/images/sidebar/banner/banner01.jpg" alt="banner">
+                                </a>
+                            </div>
+                        </div>
+                        <div class="widget-1 widget-check">
+                            <div class="widget-header">
+                                <h5 class="m-title">Filter By</h5>
+                                <a href="#0" class="clear-check">Clear All</a>
+                            </div>
+                            <div class="widget-1-body">
+                                <h6 class="subtitle">Language</h6>
+                                <div class="check-area movieLang">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="japanese">
+                                        <label for="japanese">Japanese</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="german">
+                                        <label for="german">German</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="chinese">
+                                        <label for="chinese">Chinese</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="english">
+                                        <label for="english">English</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="multi">
+                                        <label for="multi">Multiple Language</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="vietnamese">
+                                        <label for="vietnamese">Vietnamese</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="korean">
+                                        <label for="korean">Korean</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="indian">
+                                        <label for="indian">Indian</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="lang" id="french">
+                                        <label for="french">French</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-1 widget-check">
+                            <div class="widget-1-body">
+                                <h6 class="subtitle">experience</h6>
+                                <div class="check-area movieExp">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="mode" id="2d">
+                                        <label for="2d">2d</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="mode" id="3d">
+                                        <label for="3d">3d</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="4dx">
+                                        <label for="4dx">4dx</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="sweetbox">
+                                        <label for="sweetbox">sweet box</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="dolby">
+                                        <label for="dolby">dolby atmos</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="imax">
+                                        <label for="imax">imax</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="goldclass">
+                                        <label for="goldclass">gold class</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="lamour">
+                                        <label for="lamour">l'amour</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="starium">
+                                        <label for="starium">starium</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="premium">
+                                        <label for="premium">premium cinema</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="screenx">
+                                        <label for="screenx">screen x</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="cineforet">
+                                        <label for="cineforet">cine & forêt</label>
+                                    </div>
+                                    <div class="form-group check-box-item-exp">
+                                        <input type="checkbox" name="mode" id="cineroom">
+                                        <label for="cineroom">cine & livingroom</label>
+                                    </div>
+                                </div>
+                                <div class="add-check-area check-box-plus-exp">
+                                    <a href="#0">
+                                        view more <i class="plus"></i>
+                                    </a>
+                                </div>
+                                <div class="check-box-minus-exp">
+                                    <a href="#0">
+                                        view less <i class="fas fa-minus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-1 widget-check">
+                            <div class="widget-1-body">
+                                <h6 class="subtitle">genre</h6>
+                                <div class="check-area movieGenre">
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="thriller">
+                                        <label for="thriller">thriller</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="horror">
+                                        <label for="horror">horror</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="drama">
+                                        <label for="drama">drama</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="romance">
+                                        <label for="romance">romance</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="action">
+                                        <label for="action">action</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="comedy">
+                                        <label for="comedy">comedy</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="fantasy">
+                                        <label for="fantasy">fantasy</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="animation">
+                                        <label for="animation">animation</label>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="checkbox" name="genre" id="science">
+                                        <label for="science">sci-fi</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="historical">
+                                        <label for="historical">historical</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="mystery">
+                                        <label for="mystery">mystery</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="magical">
+                                        <label for="magical">magical realism</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="political">
+                                        <label for="political">political</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="paranoid">
+                                        <label for="paranoid">paranoid fiction</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="saga">
+                                        <label for="saga">saga</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="urban">
+                                        <label for="urban">urban</label>
+                                    </div>
+                                    <div class="form-group check-box-item-genre">
+                                        <input type="checkbox" name="genre" id="western">
+                                        <label for="western">western</label>
+                                    </div>
+                                </div>
+                                <div class="add-check-area check-box-plus-genre">
+                                    <a href="#0">
+                                        view more <i class="plus"></i>
+                                    </a>                                    
+                                </div>
+                                <div class="check-box-minus-genre">
+                                    <a href="#0">
+                                        view less <i class="fas fa-minus"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="widget-1 widget-banner">
+                            <div class="widget-1-body">
+                                <a href="#0">
+                                    <img src="../assets/images/sidebar/banner/banner02.jpg" alt="banner">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-9 mb-50 mb-lg-0">
+                        <div class="filter-tab tab">
+                            <div class="filter-area">
+                                <div class="filter-main">
+                                    <div class="left">
+                                        <div class="item">
+                                            <span class="show">Show :</span>
+                                            <select class="select-bar show">
+                                                <option value="12">12</option>
+                                                <option value="15">15</option>
+                                                <option value="18">18</option>
+                                                <option value="21">21</option>
+                                                <option value="24">24</option>
+                                                <option value="27">27</option>
+                                                <option value="30">30</option>
+                                            </select>
+                                        </div>
+                                        <div class="item">
+                                            <span class="show">Sort By :</span>
+                                            <select class="select-bar sortBy">
+                                                <option value="showing">now showing</option>
+                                                <option value="exclusive">exclusive</option>
+                                                <option value="trending">trending</option>
+                                                <option value="most-view">most view</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <ul class="grid-button tab-menu">
+                                        <li class="active">
+                                            <i class="fa fa-th"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-bars"></i>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="tab-area">                                
+                                <div class="tab-item active">
+                                    <div class="row mb-10 justify-content-center" id="grid-ajax">
+                                        <% movies.forEach(function(item){ %>
+                                        <div class="col-sm-6 col-lg-4">                                            
+                                            <div class="movie-grid">
+                                                <div class="movie-thumb c-thumb">
+                                                    <a href="movie-details/<%= item.id %>">                                                       
+                                                        <img src="<%=dns%><%=item.movie_thumnail.url%>" alt="movie">
+                                                    </a>                                                                                                         
+                                                </div>
+                                                <div class="movie-content bg-one">
+                                                    <h5 class="title m-0">
+                                                        <a href="movie-details/<%= item.id %>"><%=item.movie_name%></a>
+                                                    </h5>
+                                                    <ul class="movie-rating-percent">
+                                                        <li>
+                                                            <div class="thumb">
+                                                                <img src="../assets/images/movie/tomato.png" alt="movie">
+                                                            </div>
+                                                            <span class="content"><%=item.tomatometer%>%</span>
+                                                        </li>
+                                                        <li>
+                                                            <div class="thumb">
+                                                                <img src="../assets/images/movie/cake.png" alt="movie">
+                                                            </div>
+                                                            <span class="content"><%=item.audience_score%>%</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>                                            
+                                        </div> 
+                                        <% }) %>                                       
+                                    </div>
+                                </div>
+                                <div class="tab-item">                                    
+                                    <div class="movie-area mb-10" id="list-ajax">
+                                        <% movies.forEach(function(item){ %>
+                                        <div class="movie-list">
+                                            <div class="movie-thumb c-thumb">
+                                                <a href="movie-details" class="w-100 bg_img h-100" data-background="<%=dns%><%= item.movie_thumnail.url %>">
+                                                    <img class="d-sm-none" src="<%=dns%><%= item.movie_thumnail.url %>" alt="movie">
+                                                </a>                                                
+                                            </div>
+                                            <div class="movie-content bg-one">
+                                                <h5 class="title">
+                                                    <a href="movie-details"><%=item.movie_name%></a>
+                                                </h5>
+                                                <p class="duration"><%=(item.movie_duration).substring(1,2)%>hrs <%=(item.movie_duration).substring(3,5)%>min</p>
+                                                <div class="movie-tags">
+                                                    <% var genrestt %>
+                                                    <% genrestt = false; %>
+                                                    <% item.genres.forEach(function(genre){ %>
+                                                    <a href="#0"><%= genre.name %></a>
+                                                    <% if (genre) genrestt = true; %>
+                                                    <% }) %>
+                                                    <% if (!genrestt) { %>
+                                                    <a href="#0">adventure</a>
+                                                    <a href="#0">fantasy</a> 
+                                                    <% } %>
+                                                </div>
+                                                <div class="release">
+                                                    <span>Release Date : </span>
+                                                    <% if (!item.timeslots || !item.timeslots.length) { %>                                                    
+                                                     <a href="#0">Not opening yet</a>                                                  
+                                                    <% }else { %>  <a href="#0"><%= (item.timeslots[0].start_date).split("-").reverse().join("-") %></a> <%}%>
+                                                </div>
+                                                <ul class="movie-rating-percent">
+                                                    <li>
+                                                        <div class="thumb">
+                                                            <img src="../assets/images/movie/tomato.png" alt="movie">
+                                                        </div>
+                                                        <span class="content"><%=item.tomatometer%>%</span>
+                                                    </li>
+                                                    <li>
+                                                        <div class="thumb">
+                                                            <img src="../assets/images/movie/cake.png" alt="movie">
+                                                        </div>
+                                                        <span class="content"><%=item.audience_score%>%</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="book-area">
+                                                    <div class="book-ticket">
+                                                        <div class="react-item">
+                                                            <a href="#0">
+                                                                <div class="thumb">
+                                                                    <img src="../assets/images/icons/heart.png" alt="icons">
+                                                                </div>
+                                                            </a>
+                                                        </div>
+                                                        <div class="react-item mr-auto">
+                                                            <a href="/movie-ticket-plan/<%=item.id%>">
+                                                                <div class="thumb">
+                                                                    <img src="../assets/images/icons/book.png" alt="icons">
+                                                                </div>
+                                                                <span>book ticket</span>
+                                                            </a>
+                                                        </div>
+                                                        <div class="react-item">
+                                                            <a href="<%=item.movie_trailer%>" class="video-popup">
+                                                                <div class="thumb">
+                                                                    <img src="../assets/images/icons/play-button.png" alt="icons">
+                                                                </div>
+                                                                <span>watch trailer</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> 
+                                        <% }) %>                       
+                                    </div>
+                                </div>                                
+                            </div> 
+                            <div class="pagination-area text-center">
+                                <a href="#0" id="prev">
+                                    <i class="fas fa-angle-double-left"></i>
+                                    <span>Prev</span>
+                                </a>                                
+                                <% for (i=0; i<pages; i++){ %>
+                                <a href="#0" <% if (current_page === i+1) { %> class="active"  <% } %> id="<%= i+1 %>" ><%= i+1 %></a>
+                                <% } %>                                
+                                <a href="#0" id="next">
+                                    <span>Next</span>
+                                    <i class="fas fa-angle-double-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ==========Movie-Section========== -->
+        <!-- ==========Footer-Section========== -->
+        <%- include("./partials/footer", {footer: footer}) -%>
+        <!-- ==========Footer-Section========== -->       
+        <script src="../assets/js/jquery-3.3.1.min.js"></script>
+        <script src="../assets/js/modernizr-3.6.0.min.js"></script>
+        <script src="../assets/js/plugins.js"></script>
+        <script src="../assets/js/bootstrap.min.js"></script>
+        <script src="../assets/js/isotope.pkgd.min.js"></script>
+        <script src="../assets/js/magnific-popup.min.js"></script>
+        <script src="../assets/js/owl.carousel.min.js"></script>
+        <script src="../assets/js/wow.min.js"></script>
+        <script src="../assets/js/countdown.min.js"></script>
+        <script src="../assets/js/odometer.min.js"></script>
+        <script src="../assets/js/viewport.jquery.js"></script>
+        <script src="../assets/js/nice-select.js"></script>
+        <script src="../assets/js/main.js"></script>
+        <script src="../assets/js/movie.grid.js"></script>        
+    </body>
+</html>

@@ -1,0 +1,42 @@
+<!-- ==========Header-Section========== -->
+<header class="header-section">
+    <div class="container">
+        <div class="header-wrapper">
+            <div class="logo">
+                <a href="/">
+                    <h6>MONSTER</h6>
+                    <h5>N</h5>
+                    <img id="logo" src="../assets/images/logo/logo.png" alt="học viện đào tạo nodejs việt nam">
+                    <h5>DEMY</h5>                                                        
+                </a>
+            </div> 
+            <ul class="menu">                                                
+                <% header.forEach(function(item, index){ %>
+                    <% if (item.sections !== undefined) { %>    
+                        <li>                                
+                            <a href="#0" <% if (status === index) { %> class="active"  <% } %> > <%= item.label %></a>
+                            <ul class="submenu">
+                                <% item.sections.forEach(function(list){ %>
+                                    <li>
+                                        <% list.links.forEach(function(link){ %>
+                                        <a href="<%= link.url %>"><%= link.label %></a>
+                                        <% }) %>
+                                    </li>
+                                <% }) %>
+                            </ul>   
+                        </li>                                 
+                    <% } else{ %>    
+                        <li <% if (item.style === "border") { %> class="header-button pr-0"  <% } %> >
+                            <a href="<%= item.url %>" <% if (status === index) { %> class="active"  <% } %> ><%= item.label %></a> 
+                        </li>
+                    <% } %>                          
+                <% }) %>                        
+            </ul>
+            <div class="header-bar d-lg-none">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </div>
+</header>

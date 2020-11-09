@@ -1,0 +1,12 @@
+<% if(!pstStatus.includes(pstValue)){ %>
+    <li class="single-seat">
+        <img src="../assets/images/movie/seat02.png" alt="seat">
+    </li>
+<% }  
+   else { 
+    let i = pstStatus.indexOf(pstValue) %>
+    <li class="single-seat seat-free" onclick="getSeatTwo('<%=pstValue%>','<%=prices[i]%>')">
+        <img src="../assets/images/movie/seat02-free.png" alt="seat" id="s<%=pstValue%>">
+        <span class="sit-num"><%=pstValue%></span>
+    </li>
+<% } %>

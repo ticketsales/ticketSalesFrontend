@@ -36,6 +36,13 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Temperary directories
+public/css/fonts
+public/javascripts
+views/error0.ejs
+views/index2.ejs
+views/movie-grid0.ejs
+
 # Typescript v1 declaration files
 typings/
 
